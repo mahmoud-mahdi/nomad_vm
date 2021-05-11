@@ -31,6 +31,10 @@ nomad node status
 ## deploy a test Job
 cd /vagrant/
 nomad run webapp.nomad
+nomad status demo-webapp
+nomad run nginx.nomad
+nomad status nginx
+nomad alloc fs 1eb nginx/local/load-balancer.conf
 ```
 
 ### Connect to Nomad webui and consul webui and check the deployment status
