@@ -1,6 +1,5 @@
-# INSTALL & UPGRADE OS PACKAGES
+# INSTALL CONSUL + NOMAD WITH DOCKER DRIVER
 
-# INSTALL CONSUL + NOMAD
 - name: Install consul and dnsmasq
   hosts: all
   become: yes

@@ -1,38 +1,38 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+This Role is used to provision consul cluster
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+The Vms to be up and running
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Default Vars:
 
-Dependencies
-------------
+consul_version: 1.9.0  ## Should be the Consul latest stable Version
+consul_webui_version: 1.9.0  ## Webui latest stable Version
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+consul_server: true  ## It istall all agent as servers by default
+consul_client: false  ## Same as the last one and that is overwriten in the vars dir for the client servers.
+consul_webui: true  ## It install the webui by defaut
 
-Example Playbook
-----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Vars:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+consul_url: https://releases.hashicorp.com/consul/{{ consul_version }}/consul_{{ consul_version }}_linux_amd64.zip
+consul_webui_url: https://releases.hashicorp.com/consul/{{ consul_webui_version }}/consul_{{ consul_webui_version }}_web_ui.zip
+consul_download_dir: /tmp
+consul_install_dir: /usr/bin
+consul_config_dir: /var/lib/consul/conf
+consul_data_dir: /var/lib/consul
+consul_webui_install_dir: /opt/consul-webui
+consul_user: root  ## Use root to bind to port 53
+consul_group: root
+consul_service_name: consul   ## The systemd service name for consul
+consul_ui_dir: "{{ consul_webui_install_dir }}/dist"
 
-License
--------
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
